@@ -1,0 +1,23 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up C++ toolchain
+        uses: actions/setup-cpp@v2
+        with:
+          compiler: gcc
+
+      - name: Build C++ code
+        run: g++ -std=c++23 -o my_program main.cpp
