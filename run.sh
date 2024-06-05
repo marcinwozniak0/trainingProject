@@ -17,9 +17,16 @@ build_stage() {
 }
 
 run_stage() {
-    echo "Building the runtime stage..."
-    docker build --target run -t $RUNTIME_IMAGE . && echo "Runtime stage build completed."
-    echo "Running the runtime stage..."
+    echo "Building the run stage..."
+    docker build --target run -t $RUNTIME_IMAGE . && echo "Run stage completed."
+    echo "Running the run stage..."
+    docker run --rm $RUNTIME_IMAGE
+}
+
+test_stage() {
+    echo "Building the test stage..."
+    docker build --target test -t $RUNTIME_IMAGE . && echo "Test stage completed."
+    echo "Running the test stage..."
     docker run --rm $RUNTIME_IMAGE
 }
 
@@ -44,6 +51,9 @@ case "$1" in
         ;;
     --run)
         run_stage
+        ;;
+    --test)
+        test_stage
         ;;
     *)
         usage
