@@ -12,5 +12,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Execute run.sh
-        run: ./run.sh
+      - name: Execute build stage
+        run: ./run.sh --build
+      - name: Execute test stage
+        run: ./run.sh --test
