@@ -13,8 +13,8 @@ RUN mkdir build && cd build && cmake -G Ninja .. && ninja
 FROM debian:12 AS run
 WORKDIR /usr/src/app
 COPY --from=build /usr/src/app/build ./build
-RUN cd build && ./training_project
-
+WORKDIR /usr/src/app/build
+CMD ["./training_project"]
 
 FROM debian:12 AS test
 RUN apt-get update && apt-get install -y cmake
