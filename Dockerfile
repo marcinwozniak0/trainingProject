@@ -1,4 +1,4 @@
-FROM debian:12 as build
+FROM debian:12 AS build
 RUN apt-get update && \
     apt-get install -y build-essential cmake libgtest-dev ninja-build
 RUN cd /usr/src/gtest && \
