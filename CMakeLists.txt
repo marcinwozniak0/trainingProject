@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_GENERATOR "Ninja")
 
-add_executable(training_project src/main.cpp)
+add_executable(training_project src/main.cpp src/Sender.cpp src/Client.cpp src/Server.cpp)
 
 enable_testing()
 add_executable(training_project_test tests/main.cpp)
